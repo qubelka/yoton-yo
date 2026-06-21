@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yötön Yö - Finnish Midsummer Game</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div id="game-container">
+    <canvas id="gameCanvas" width="960" height="640"></canvas>
+    
+    <!-- UI Overlay for Screens -->
+    <div id="ui-overlay" class="overlay-screen active">
+      <div class="glass-panel" id="start-screen">
+        <h1 class="game-title">Yötön Yö</h1>
+        <p class="game-subtitle">Nightless Night • A Midsummer Adventure</p>
+        
+        <div class="instructions-box">
+          <h2>How to Survive Midsummer (*Juhannus*)</h2>
+          <ul>
+            <li>
+              <span class="icon">🌸</span>
+              <span class="text"><strong>Gather 7 Magical Flowers:</strong> Search the grass in the twilight and click to pick them before dawn.</span>
+            </li>
+            <li>
+              <span class="icon">🧖</span>
+              <span class="text"><strong>Manage Sauna Heat:</strong> Keep it between <strong>60°C - 80°C</strong>. Click the sauna or press <strong>Spacebar</strong> to throw water (*löyly*). Overheating (&gt;90°C) resets and penalizes you!</span>
+            </li>
+            <li>
+              <span class="icon">🪵</span>
+              <span class="text"><strong>Feed the Bonfire:</strong> Click the woodpile to pick up a log, then click the bonfire to fuel it. Don't let it go out!</span>
+            </li>
+            <li>
+              <span class="icon">🦟</span>
+              <span class="text"><strong>Swat Mosquitoes:</strong> Click they buzzing pests. If more than 5 swarm, your Cozy Meter drains rapidly!</span>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Controls Overlay Helper -->
+        <div id="quick-controls">
+          <span>[Space] Löyly</span>
+          <span>[M] Mute Sound</span>
+        </div>
+
+        <button id="start-btn" class="glow-button">Enter the Twilight</button>
+      </div>
+
+      <div class="glass-panel hidden" id="gameover-screen">
+        <h1 class="screen-title loss">The Fire Went Out...</h1>
+        <p id="gameover-reason" class="screen-reason">Midsummer night was too cold without the bonfire.</p>
+        <div class="stats-summary">
+          <p>Score: <span id="final-score" class="highlight-val">0</span></p>
+          <p>Flowers: <span id="final-flowers" class="highlight-val">0/7</span></p>
+        </div>
+        <button id="restart-btn-loss" class="glow-button">Try Again</button>
+      </div>
+
+      <div class="glass-panel hidden" id="victory-screen">
+        <h1 class="screen-title victory">Midsummer Magic!</h1>
+        <p class="screen-reason">You gathered the 7 magical flowers under the nightless sky and kept the Finnish traditions burning bright!</p>
+        <div class="stats-summary">
+          <p>Final Score: <span id="victory-score" class="highlight-val">0</span></p>
+          <p>Bonus Multiplier: <span class="highlight-val">x2!</span></p>
+        </div>
+        <button id="restart-btn-win" class="glow-button">Play Again</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
